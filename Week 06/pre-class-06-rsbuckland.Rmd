@@ -1,0 +1,55 @@
+# pre-class
+
+
+Make sure you commit this often with meaningful messages. 
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+1. Read the source code for each of the following three functions, puzzle out what they do, and then brainstorm better names.
+
+```
+f1 <- function(string, prefix) {
+  substr(string, 1, nchar(prefix)) == prefix
+}
+#Better name for f1 is prefix_pull
+
+f2 <- function(x) {
+  if (length(x) <= 1) return(NULL)
+  x[-length(x)]
+}
+#Better name for f2 is trim_last
+
+f3 <- function(x, y) {
+  rep(y, length.out = length(x))
+}
+#Better name for f3 is repeat_x_len_y
+```
+
+2. Compare and contrast rnorm() and MASS::mvrnorm(). How could you make them more consistent?
+#mvrnorm is the multivariate version of rnorm and uses the variance-covariance matrix in place of rnorm's sd. 
+
+
+3. Use `lapply()` and an anonymous function to find the coefficient of variation (the standard deviation divided by the mean) for all columns in the mtcars dataset. 
+
+```{r}
+coeff_variation <-lapply(mtcars, ~ map_dbl(., mean) / map_dbl(., sd))
+```
+
+4. Use vapply() to:
+    a. Compute the standard deviation of every column in a numeric data frame.
+```{r}
+df <- data.frame(replicate(10,sample(0:1,1000,rep=TRUE)))
+col_sd <- vapply(df, sd, numeric(1))
+```
+
+    b. Compute the standard deviation of every numeric column in a mixed data frame. (Hint: you'll need to use vapply() twice.)
+```{r}
+vapply(df2[vapply(df2, is.numeric, logical(1))],
+       sd,
+       numeric(1))
+```
