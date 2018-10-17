@@ -31,7 +31,7 @@ f3 <- function(x, y) {
 ```
 
 2. Compare and contrast rnorm() and MASS::mvrnorm(). How could you make them more consistent?
-#mvrnorm is the multivariate version of rnorm and uses the variance-covariance matrix in place of rnorm's sd. 
+#mvrnorm is the multivariate version of rnorm and uses the variance-covariance matrix in place of rnorm's sd. To make them more consistent, we could play around to get the trace of the covariance matrix and square that to convert it into sd.
 
 
 3. Use `lapply()` and an anonymous function to find the coefficient of variation (the standard deviation divided by the mean) for all columns in the mtcars dataset. 
