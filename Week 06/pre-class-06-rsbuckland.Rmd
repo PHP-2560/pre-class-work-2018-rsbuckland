@@ -37,7 +37,9 @@ f3 <- function(x, y) {
 3. Use `lapply()` and an anonymous function to find the coefficient of variation (the standard deviation divided by the mean) for all columns in the mtcars dataset. 
 
 ```{r}
-coeff_variation <-lapply(mtcars, ~ map_dbl(., mean) / map_dbl(., sd))
+mtcars <- mtcars
+coeff_variation <-lapply(mtcars, function(x) sd(x)/mean(x))
+coeff_variation
 ```
 
 4. Use vapply() to:
@@ -45,6 +47,7 @@ coeff_variation <-lapply(mtcars, ~ map_dbl(., mean) / map_dbl(., sd))
 ```{r}
 df <- data.frame(replicate(10,sample(0:1,1000,rep=TRUE)))
 col_sd <- vapply(df, sd, numeric(1))
+col_sd
 ```
 
     b. Compute the standard deviation of every numeric column in a mixed data frame. (Hint: you'll need to use vapply() twice.)
