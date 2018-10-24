@@ -53,7 +53,7 @@ hands <- function(n, bank, bet, prob){
   bank
 }
 
-
+#Plugging in 100 as number of hands, n, for question 1a
 bust_100 <- 0
 for(i in 1:5000){
   hands_100 <- hands(100, 1000, 100, 0.5)
@@ -64,6 +64,7 @@ for(i in 1:5000){
 bust_prob_100 = bust_100/5000
 bust_prob_100
 
+#Plugging in 500 as number of hands, n, for question 1b.
 bust_500 <- 0
 for(i in 1:5000){
   hands_500 <- hands(500, 1000, 100, 0.5)
